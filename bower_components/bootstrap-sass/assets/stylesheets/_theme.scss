@@ -4,11 +4,11 @@
     margin-right: 5px
 }
 
-#field2 { background: #fuc40f; }
-#field3 { background: #657070; }
-#field4 { background: #8e44ad; }
-#field5 { background: #2ecc71; }
-#field6 { background: #e74c3c; }
+#field2 { background: $fields-groc; }
+#field3 { background: $fields-grey; }
+#field4 { background: $fields-purple; }
+#field5 { background: $fields-green; }
+#field6 { background: $fields-red; }
 
 
 .buscar {
