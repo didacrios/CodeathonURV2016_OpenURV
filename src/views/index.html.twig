@@ -1,12 +1,42 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    {% for field in fields %}
-        {{field.name}} <br/>
-    {% endfor %}
-    <hr/>
 
-    {% for projecttype in projecttypes %}
-        {{projecttype.name}} <br/>
-    {% endfor %}
+<section class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<ol>
+				<li><a href="#">Registra't</a></li>
+				<li>Penja el teu <strong>treball/projecte</strong></li>
+				<li>Obre'l per a que tots els membres et facin aportacions i et valorin</li>
+				<li>Has tingut una bona idea. Comparteix-la i deixa-la <strong>créixer</strong></li>
+			</ol>
+		</div>
+		<div class="col-md-6">
+			<!--<img src="/assets/img/goose-head.png" alt="ogoose">-->
+			<img src="http://placehold.it/30x30" alt="ogoose">
+			<form action="/search" method="post">
+				<div><input type="text" name="keyword" id="keyword" placeholder="Paraules clau" required></div>
+				<hr>
+				<p><label for="fieldid">Tria el teu àmbit</label></p>
+				{% for field in fields %}
+					<a href="javascript:void(0);" id="field{{ field.id }}" class="fieldlabels label label-default" data-id="{{ field.id }}">{{ field.name }}</a>
+				{% endfor %}
+				<input type="hidden" id="fieldid" name="fieldid" value="">
+				<hr/>
+				
+				<p><label for="fieldid">Tipus de treball</label></p>
+
+				{% for projecttype in projecttypes %}
+					<label for="projecttype{{ projecttype.id }}">
+						<input type="radio" name="projecttype" id="projecttype{{ projecttype.id }}" value="{{ projecttype.id }}"> {{ projecttype.name }}
+					</label>
+				{% endfor %}
+			</form>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</section>
+
+
 {% endblock %}
