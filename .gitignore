@@ -2,3 +2,6 @@
 /nbproject/private/
 .sftp-config.json
 /src/config.php
+
+
+.sass-cache/
