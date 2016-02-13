@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    {% for field in fields %}
+        {{field.name}} <br/>
+    {% endfor %}
+    <hr/>
+
+    {% for projecttype in projecttypes %}
+        {{projecttype.name}} <br/>
+    {% endfor %}
+{% endblock %}

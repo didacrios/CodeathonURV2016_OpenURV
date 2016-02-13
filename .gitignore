@@ -1,6 +1,6 @@
 /vendor/
 /nbproject/private/
-.sftp-config.json
+sftp-config.json
 /src/config.php
 
 
