@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<section class="container">
+<section class="container" >
 	<div class="row">
 		<div class="col-md-4">
 			<ol>
@@ -15,26 +15,11 @@
 		<div class="col-md-6">
 			<!--<img src="/assets/img/goose-head.png" alt="ogoose">-->
 			<img src="http://placehold.it/30x30" alt="ogoose">
-			<form action="/search" method="post">
-				<div><input type="text" name="keyword" id="keyword" placeholder="Paraules clau" required></div>
-				<hr>
-				<p><label for="fieldid">Tria el teu àmbit</label></p>
-				{% for field in fields %}
-					<a href="javascript:void(0);" id="field{{ field.id }}" class="fieldlabels label label-default" data-id="{{ field.id }}">{{ field.name }}</a>
-				{% endfor %}
-				<input type="hidden" id="fieldid" name="fieldid" value="">
-				<hr/>
-				
-				<p><label for="fieldid">Tipus de treball</label></p>
-
-				{% for projecttype in projecttypes %}
-					<label for="projecttype{{ projecttype.id }}">
-						<input type="radio" name="projecttype" id="projecttype{{ projecttype.id }}" value="{{ projecttype.id }}"> {{ projecttype.name }}
-					</label>
-				{% endfor %}
-			</form>
+			{% include 'searchform.html.twig' %}
 		</div>
-		<div class="col-md-2"></div>
+		<div class="col-md-2">
+			<img src="http://placehold.it/100x100" alt="ogoose">
+		</div>
 	</div>
 </section>
 
