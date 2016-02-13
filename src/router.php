@@ -13,4 +13,5 @@
 });
 */
 
-$app->get('/', 'IndexController::getHome');
+$app->get('/', 'IndexController::getHomePage');
+$app->post('/search', 'SearchController::getResults');
