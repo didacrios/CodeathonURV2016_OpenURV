@@ -15,30 +15,35 @@ class SearchController {
         $keyword = $this->_parseKeywords($request->get('keyword'));
         
         //Creem la query amb el filtre principal
-        $sql = "SELECT * FROM project WHERE (keywords like '%$keyword%' OR title like '%$keyword%')";
+        $sql = "SELECT p.id, p.title, p.publicationdate, p.finish, p.fieldid, pt.name as 'projecttype' FROM project p LEFT JOIN projecttype pt ON pt.id=p.projecttypeid WHERE (p.keywords like '%$keyword%' OR p.title like '%$keyword%')";
         //$params = array($keyword, $keyword); //Sembla que no fa el binding dels paràmetres, de moment seguim així
         
         if (!empty($fieldid)) { //Si tenim àmbit, afegim el filtre
-            $sql .= " AND fieldid = $fieldid";
+            $sql .= " AND p.fieldid = $fieldid";
             //$params[] = $fieldid;
         }
         
         if (!empty($projecttypeid)) { //Si tenim tipus de projecte, afegim el filtre
-            $sql .= " AND projecttypeid = $projecttypeid";
+            $sql .= " AND p.projecttypeid = $projecttypeid";
             //$params[] = $projecttypeid;
         }
         
         if ($finish != '') { //Si tenim 'en progrès' o 'finalitzat', afegim el filtre
-            $sql .= " AND finish = $finish";
+            $sql .= " AND p.finish = $finish";
             //$params[] = $finish;
         }
         
         //Obtenim els results
-        $projects = $app['db']->fetchAll($sql);
-        //die(var_dump($projects));
+        $rs = $app['db']->query($sql);
+        $projects = $rs->fetchAll(\PDO::FETCH_OBJ);
+        //die('<pre>' . print_r($projects, true));
+        
+        //Opcions del buscador
+        $fields = $app['db']->fetchAll('SELECT * FROM field');
+        $projecttypes = $app['db']->fetchAll('SELECT * FROM projecttype');
         
         //Mostrem la plantilla de resultats de cerca
-        return $app['twig']->render('search.html.twig', array('projects' => $projects));
+        return $app['twig']->render('search.html.twig', array('projects' => $projects, 'fields' => $fields, 'projecttypes' => $projecttypes));
     }
     
     private function _parseKeywords($string) {
