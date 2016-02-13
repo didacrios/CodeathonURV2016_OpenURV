@@ -1,3 +1,0 @@
-app:
-    resource: "@oGooseBundle/Controller/"
-    type:     annotation
