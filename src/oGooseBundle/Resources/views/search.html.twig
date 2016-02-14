@@ -14,7 +14,7 @@
                                <h2><a href="{{ url('project_show', { 'id': project.id }) }}">{{project.title}}</a></h2>
                                <div class="authors">
                                    <strong>Autors:</strong>
-                                   <a href="/author/{{project.author.id}}" rel="author">{{project.author.firstname}} {{project.author.lastname}}</a>
+                                   <a href="{{ url('author_show', { 'id': project.author.id }) }}" rel="author">{{project.author.firstname}} {{project.author.lastname}}</a>
                                </div>
                                
                            </header>

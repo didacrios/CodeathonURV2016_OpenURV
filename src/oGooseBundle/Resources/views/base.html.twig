@@ -38,7 +38,7 @@
 
                     <div class="col-xs-12 col-sm-6 col-lg-2 text-right">
                     {% if session is defined %}
-                        <a href="/profile/{{ session.id }}" title="{{ session.name }}">
+                        <a href="{{ url('author_show', { 'id': session.id }) }}" title="{{ session.name }}">
                             <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ session.name }}
                         </a>
                     {% else %}
