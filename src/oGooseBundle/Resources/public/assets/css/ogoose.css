@@ -5293,7 +5293,7 @@ form .buscar {
   color: black; }
 .searchresults article h2 a:hover, .searchresults article h2 a:link:hover, .searchresults article h2 a:visited:hover {
   text-decoration: underline; }
-.searchresults article header, .searchresults article footer {
+.searchresults article .abstract, .searchresults article header, .searchresults article footer {
   margin-left: 8px; }
 .searchresults article .btn {
   border-radius: 2px;
