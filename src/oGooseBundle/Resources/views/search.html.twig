@@ -1,0 +1,46 @@
+{% extends 'oGooseBundle:base.html.twig' %}
+
+{% block content %}
+<section class="container" >
+    <div class="row">
+            {% include 'oGooseBundle:searchform.html.twig' %}
+            {% if projects|length > 0 %}
+                <div class="searchresults">
+                   <header><h1>Resultats</h1></header>
+
+                   {% for project in projects %}
+                       <article class="article field{{project.0.field.id}}">
+                           <header>
+                               <h2><a href="/project/{{project.0.id}}">{{project.0.title}}</a></h2>
+                               <div class="authors">
+                                   <strong>Autors:</strong>
+                                   <a href="/author/{{project.0.author.id}}" rel="author">{{project.0.author.firstname}} {{project.0.author.lastname}}</a>
+                               </div>
+                               
+                           </header>
+                           <footer class="row">
+                               <div class="col-xs-4">
+                                    <a href="/project/{{project.0.id}}" class="btn buttonfield{{ project.0.field.id }}">Consulta'l</a>
+
+                                    {% for i in 1..project.totalstars %}
+                                        <span class="glyphicon glyphicon-star star" aria-hidden="true"></span>
+                                    {% endfor %}
+                               </div>
+                                    
+                                <div class="col-xs-1 col-xs-offset-2">
+                                    <time datetime="{{ project.0.publicationdate | date('Y-m-d\\TH:i:sP') }}">{{ project.0.publicationdate | date('d/m/Y') }}</time>
+                                </div>
+                                
+                                <div class="col-xs-1">
+                                    {% if project.0.finish == 0 %}En procés{% else %}Finalitzat{% endif %} | {{project.0.projecttype.name}}</span>
+                                </div>
+
+                               <div class="col-xs-1">{{project.0.field.name}}</div>
+                           </footer>
+                       </article>
+                   {% endfor %}
+               </div>
+            {% endif %}
+    </div>
+</section>
+{% endblock %}

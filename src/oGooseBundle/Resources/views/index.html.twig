@@ -1,0 +1,24 @@
+{% extends 'oGooseBundle:base.html.twig' %}
+
+{% block content %}
+    <section class="container" >
+        <div class="row">
+            <div class="col-xs-12 col-md-3">
+                <ol>
+                    <li><a href="#">Registra't</a></li>
+                    <li>Penja el teu <strong>treball/projecte</strong></li>
+                    <li>Obre'l per a que tots els membres et facin aportacions i et valorin</li>
+                    <li>Has tingut una bona idea. Comparteix-la i deixa-la <strong>créixer</strong></li>
+                </ol>
+            </div>
+            <div class="col-xs-12 col-md-7">
+                <!--<img src="/assets/img/goose-head.png" alt="ogoose">-->
+                <img src="http://placehold.it/30x30" alt="ogoose">
+                {% include 'oGooseBundle:searchform.html.twig' %}
+            </div>
+            <div class="col-xs-12 col-md-2">
+                <img src="http://placehold.it/100x100" alt="ogoose">
+            </div>
+        </div>
+    </section>
+{% endblock %}

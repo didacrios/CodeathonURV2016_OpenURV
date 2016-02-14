@@ -1,0 +1,39 @@
+<form action="{{path('search')}}" method="post" class="searchform">
+    <div><input type="text" name="keyword" id="keyword" placeholder="Paraules clau o assignatura" required {% if keyword is defined and keyword is not empty %}value="{{keyword}}"{% endif %}></div>
+    <hr>
+    <div><label for="fieldid">Tria el teu àmbit</label></div>
+    {% for field in fields %}
+        <a href="javascript:void(0);" id="field{{ field.id }}" class="fieldlabels label label-default" data-id="{{ field.id }}">{{ field.name }}</a>
+    {% endfor %}
+    <input type="hidden" id="fieldid" name="fieldid" value="">
+    <hr/>
+
+    <div><label for="fieldid">Tipus de treball</label></div>
+
+    <div class="clearfix text-center">
+        {% for projecttype in projecttypes %}
+            <input type="radio" name="projecttype" id="projecttype{{ projecttype.id }}" value="{{ projecttype.id }}">
+            <label for="projecttype{{ projecttype.id }}" class="radio">{{ projecttype.name }}</label>
+        {% endfor %}
+    </div>
+
+    <hr>
+    
+    <div class="clearfix text-center">
+        <input type="radio" name="finish" id="finish0" value="0">
+        <label for="finish0" class="radio">
+                 En progrés
+        </label>
+
+        <input type="radio" name="finish" id="finish1" value="1">
+        <label for="finish1" class="radio">
+                Finalitzat
+        </label>
+    </div>
+    
+    <hr>
+
+    <div class="text-center">
+        <input class="buscar" type="submit" name="submit" id="submit" value="Buscar">
+    </div>
+</form>
