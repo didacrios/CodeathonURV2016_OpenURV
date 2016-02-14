@@ -7,6 +7,11 @@ a:hover {
     text-decoration: none;
 }
 
+a.btn {
+    &:hover {
+        color: $gray-lighter;
+    }
+}
 
 
 .top-header {
@@ -28,7 +33,6 @@ a:hover {
             color: $taronja;
         }
     }
-    
 
     .slogan {
         color: lighten($gray-base, 60.5%);
@@ -208,4 +212,112 @@ form {
     }
 }
 
+/** Pestanyes */
+.tab-content {
+    box-shadow: $shadow;
 
+    .tab-pane {
+        .table {
+            margin: 20px 0;
+        }
+
+    }
+
+    form {
+        margin: 20px auto;
+        width: 80%;
+
+        .row {
+            padding-top: 20px;
+        }
+    }
+
+    input[type="submit"] {
+        margin-left: 5px;
+    }
+
+    blockquote {
+        width: 80%;
+        font-size: 90%;
+        margin: 10px auto;
+        box-shadow: 0 0 3px $gray-light;
+    }
+
+}
+
+.keywords {
+    font-size: 90%;
+    margin: 10px 0;
+    span {
+        margin-right: 5px;
+    }
+}
+.comment {
+    width: 80%;
+    margin: auto;
+    padding: 10px 0;
+    box-shadow: $shadow;
+    min-height: 80px;
+}
+
+/* Fitxa de perfil */
+
+.author {
+
+    $authorSpace: 30px;
+
+    margin-top: 20px;
+    box-shadow: $shadow;
+
+    h2 {
+        font-weight: bolder;
+        margin-left: $authorSpace;
+        padding-top: 10px;
+    }
+
+    .avatar {
+        float: right;
+        margin-top: -40px;
+        margin-right: 20px;
+    }
+
+    .subprofile {
+        font-color: $gray-light;
+        margin-left: $authorSpace;
+    }
+
+    .bio {
+        margin-left: $authorSpace;
+        margin-top: 8px;
+
+        blockquote {
+            border-color: $gray;
+        }
+
+        blockquote {
+            background: $gray-lighter;
+            width: 90%;
+        }
+    }
+
+    .orcid {
+        margin-left: $authorSpace;
+        margin-bottom: 20px;
+        background: $fields-red;
+        color: white;
+
+        &:hover {
+            color: $gray-lighter;
+        }
+    }
+
+}
+
+.containerarticles {
+    margin: auto;
+
+    .article {
+        width: 90%;
+        margin: 10px auto;
+    }
+}

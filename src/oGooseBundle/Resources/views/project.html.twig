@@ -47,7 +47,7 @@
                         </div>
 
                         {% if project.attachments is not empty %}
-                            <a href="{{ url('attachment_download', { 'id': project.attachments[0].id }) }}" class="btn btn-primary">Descarrega</a> <span class="updated">actualitzat a {{project.attachments[0].creationdate | date('d/m/Y')}}</span>
+                            <a href="{{ url('attachment_download', { 'id': project.attachments[0].id }) }}" class="btn buttonfield{{ project.field.id }}">Descarrega</a> <span class="updated">actualitzat a {{project.attachments[0].creationdate | date('d/m/Y')}}</span>
                         {% endif %}
                     </footer>
                 </article>
@@ -63,12 +63,14 @@
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane {% if section is empty or section == 'reviews'%}active{% endif %}" id="reviews">
                             <form method="post" action="{{path('comment_new')}}">
+                              <div class="row">
                                 <textarea name="comment" placeholder="Escriu el teu missatge" class="comment" required></textarea>
                                 <input type="hidden" name="projectid" value="{{project.id}}" />
                                 <input type="hidden" name="authorid" value="1" />
                                 <input type="hidden" name="type" value="review" />
                                 <input type="hidden" name="section" value="reviews" />
                                 <input type="submit" value="Enviar valoració" class="btn btn-primary" />
+                              </div>
                             </form>
 
                            {% for review in project.comments if review.type == 'review' %} {# Només reviews #}
@@ -80,7 +82,7 @@
                                                {{review.creationdate | date('d/m/Y')}}
                                            </div>
                                            <div class="col-md-2">
-                                               {{review.author.firstname}} {{review.author.lastname}}
+                                              <a href="{{ url('author_show', { 'id': project.author.id }) }}">{{review.author.firstname}} {{review.author.lastname}}</a>
                                            </div>
                                        </div>
                                        
@@ -88,14 +90,17 @@
                                </blockquote>
                            {% endfor %}
                         </div>
+
                         <div role="tabpanel" class="tab-pane {% if section == 'comments'%}active{% endif %}" id="comments">
                            <form method="post" action="{{path('comment_new')}}">
+                              <div class="row">
                                 <textarea name="comment" placeholder="Escriu el teu missatge" class="comment" required></textarea>
-                                <input type="hidden" name="projectid" value="{{project.id}}" />
-                                <input type="hidden" name="authorid" value="1" />
-                                <input type="hidden" name="type" value="comment" />
-                                <input type="hidden" name="section" value="comments" />
-                                <input type="submit" value="Enviar aportació" class="btn btn-primary" />
+                                <input type="hidden" name="projectid" value="{{project.id}}">
+                                <input type="hidden" name="authorid" value="1">
+                                <input type="hidden" name="type" value="comment">
+                                <input type="hidden" name="section" value="comments">
+                                <input type="submit" value="Enviar aportació" class="btn btn-primary">
+                              </div>
                             </form>
 
                            {% for review in project.comments if review.type == 'comment' %}{# Només comentaris#}
@@ -107,7 +112,7 @@
                                                {{review.creationdate | date('d/m/Y')}}
                                            </div>
                                            <div class="col-md-2">
-                                               {{review.author.firstname}} {{review.author.lastname}}
+                                               <a href="{{ url('author_show', { 'id': project.author.id }) }}">{{review.author.firstname}} {{review.author.lastname}}</a>
                                            </div>
                                        </div>
                                        
@@ -121,12 +126,12 @@
                                     <tr>
                                         <th>Actualitzat</th>
                                         <th>Autor</th>
-                                        <th>-</th>
+                                        <th></th>
                                     </tr>
                                     {% for att in project.attachments %}
                                         <tr>
                                             <td>{{att.creationdate | date('d/m/Y') }}</td>
-                                            <td>{{att.author.firstname}} {{att.author.lastname}}</td>
+                                            <td><a href="{{ url('author_show', { 'id': project.author.id }) }}">{{att.author.firstname}} {{att.author.lastname}}</a></td>
                                             <td>
                                                 <a href="{{ url('attachment_download', { 'id': att.id }) }}" class="btn btn-primary">Descarrega</a>
                                             </td>
