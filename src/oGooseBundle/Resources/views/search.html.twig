@@ -20,7 +20,7 @@
                            </header>
                            <footer class="row">
                                <div class="col-xs-4">
-                                    <a href="/project/{{project.id}}" class="btn buttonfield{{ project.field.id }}">Consulta'l</a>
+                                    <a href="{{ url('project_show', { 'id': project.id }) }}" class="btn buttonfield{{ project.field.id }}">Consulta'l</a>
 
                                     {% set totalstars = 0 %}
                                     {% for rating in project.ratings %}

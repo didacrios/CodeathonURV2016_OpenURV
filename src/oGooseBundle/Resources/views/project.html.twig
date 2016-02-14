@@ -51,18 +51,25 @@
                 </article>
 
                 <div>
+                    {{section}}
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Valoracions</a></li>
-                        <li role="presentation"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">Aportacions</a></li>
+                        <li role="presentation" class="{% if section is empty or section == 'reviews'%}active{% endif %}"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Valoracions</a></li>
+                        <li role="presentation" class="{% if section == 'comments'%}active{% endif %}"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">Aportacions</a></li>
                         <li role="presentation"><a href="#log" aria-controls="log" role="tab" data-toggle="tab">Historial</a></li>
                     </ul>
 
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="reviews">
-                            <div>
-                                <textarea placeholder="Escriu el teu missatge" class="add-review"></textarea>
-                            </div>
-                           {% for review in project.comments if review.type == 'review' %}
+                        <div role="tabpanel" class="tab-pane {% if section is empty or section == 'reviews'%}active{% endif %}" id="reviews">
+                            <form method="post" action="{{path('comment_new')}}">
+                                <textarea name="comment" placeholder="Escriu el teu missatge" class="comment" required></textarea>
+                                <input type="hidden" name="projectid" value="{{project.id}}" />
+                                <input type="hidden" name="authorid" value="1" />
+                                <input type="hidden" name="type" value="review" />
+                                <input type="hidden" name="section" value="reviews" />
+                                <input type="submit" value="Enviar valoració" class="btn btn-primary" />
+                            </form>
+
+                           {% for review in project.comments if review.type == 'review' %} {# Només reviews #}
                                <blockquote>
                                    <p>{{review.comment}}</p>
                                    <small>
@@ -79,11 +86,50 @@
                                </blockquote>
                            {% endfor %}
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="comments">
-                            - Aportacions -
+                        <div role="tabpanel" class="tab-pane {% if section == 'comments'%}active{% endif %}" id="comments">
+                           <form method="post" action="{{path('comment_new')}}">
+                                <textarea name="comment" placeholder="Escriu el teu missatge" class="comment" required></textarea>
+                                <input type="hidden" name="projectid" value="{{project.id}}" />
+                                <input type="hidden" name="authorid" value="1" />
+                                <input type="hidden" name="type" value="comment" />
+                                <input type="hidden" name="section" value="comments" />
+                                <input type="submit" value="Enviar aportació" class="btn btn-primary" />
+                            </form>
+
+                           {% for review in project.comments if review.type == 'comment' %}{# Només comentaris#}
+                               <blockquote>
+                                   <p>{{review.comment}}</p>
+                                   <small>
+                                       <div class="row">
+                                           <div class="col-md-2">
+                                               {{review.creationdate | date('d/m/Y')}}
+                                           </div>
+                                           <div class="col-md-2">
+                                               {{review.author.firstname}} {{review.author.lastname}}
+                                           </div>
+                                       </div>
+                                       
+                                   </small>
+                               </blockquote>
+                           {% endfor %}
                         </div>
                         <div role="tabpanel" class="tab-pane" id="log">
-                            - Historial -
+                            <table class="table">
+                                <tr>
+                                    <th>Actualitzat</th>
+                                    <th>Autor</th>
+                                    <th>-</th>
+                                </tr>
+                                {% for att in project.attachments %}
+                                    <tr>
+                                        <td>{{att.creationdate | date('d/m/Y') }}</td>
+                                        <td>{{att.author.firstname}} {{att.author.lastname}}</td>
+                                        <td>
+                                            <a href="{{ url('attachment_download', { 'id': att.id }) }}" class="btn btn-primary">Descarrega</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
                         </div>
                     </div>
                 </div>

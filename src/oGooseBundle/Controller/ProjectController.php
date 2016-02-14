@@ -10,10 +10,10 @@ use Symfony\Component\HttpFoundation\Request;
 class ProjectController extends Controller
 {
     /**
-     * @Route("/project/{id}", name="project_show")
+     * @Route("/project/{id}/{section}", name="project_show")
      * @Method({"GET", "POST"})
      */
-    public function indexAction(Request $request, $id)
+    public function indexAction(Request $request, $id, $section = '')
     {   
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('oGooseBundle:Project');
@@ -32,6 +32,6 @@ class ProjectController extends Controller
         $query = $queryBuilder->getQuery();
         $project = $query->getSingleResult();
         
-        return $this->render('oGooseBundle:project.html.twig', array('project' => $project));
+        return $this->render('oGooseBundle:project.html.twig', array('project' => $project, 'section' => $section));
     }
 }
