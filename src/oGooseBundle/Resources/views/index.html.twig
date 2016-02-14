@@ -4,20 +4,22 @@
     <section class="container" >
         <div class="row">
             <div class="col-xs-12 col-md-3">
-                <ol>
-                    <li><a href="#">Registra't</a></li>
+                <ol class="todo">
+                    {%if session is not defined %}<li><a href="#">Registra't</a></li>{% endif %}
                     <li>Penja el teu <strong>treball/projecte</strong></li>
                     <li>Obre'l per a que tots els membres et facin aportacions i et valorin</li>
                     <li>Has tingut una bona idea. Comparteix-la i deixa-la <strong>créixer</strong></li>
                 </ol>
             </div>
-            <div class="col-xs-12 col-md-7">
+            <div class="col-xs-12 col-md-7 text-center">
                 <!--<img src="/assets/img/goose-head.png" alt="ogoose">-->
-                <img src="http://placehold.it/30x30" alt="ogoose">
+                <img src="/bundles/ogoose/assets/img/oca.png" class="oca" alt="oGoose">
                 {% include 'oGooseBundle:searchform.html.twig' %}
             </div>
             <div class="col-xs-12 col-md-2">
-                <img src="http://placehold.it/100x100" alt="ogoose">
+                <div class="bafarada">
+                    <div>Fomentem la <strong>investigació coŀlaborativa</strong> de manera <strong>multidisciplinar i coŀlectiva</strong>. {%if session is not defined %}<a href="/register">T'hi apuntes?</a>{% endif %}</div>
+                </div>
             </div>
         </div>
     </section>

@@ -1,3 +1,5 @@
+<!-- informació fake per a emular un objecte amb la la sessió  -->
+{% set session = {'id': '1', 'email': 'teresa.morla@urv.cat', 'name': 'Teresa Morlà'} %}
 <!DOCTYPE html>
 <!--[if IE 7 ]><html class="ie ie7 lte9 lte8 lte7" lang="en-US"><![endif]-->
 <!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="en-US">	<![endif]-->
@@ -11,14 +13,16 @@
         <!-- meta -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no"/>
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no">
 
         <!-- google fonts -->
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
         <!-- css -->
         <link rel="stylesheet" href="/bundles/ogoose/assets/css/ogoose.css" media="screen"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css">
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
     </head>
 
     <body>
@@ -27,14 +31,19 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-lg-6 col-lg-offset-2">
                         <a href="{{path('homepage')}}">
-                            <!--<img src="/bundles/ogoose/assets/img/ogoose-logo.png" alt="oGoose">-->
-                            <img src="http://placehold.it/150x80" alt="oGoose">
+                            <img src="/bundles/ogoose/assets/img/logo.png" class="logo" alt="oGoose">
                         </a>
                         <span class="slogan">Construïm el coneixement del futur</span>
                     </div>
 
                     <div class="col-xs-12 col-sm-6 col-lg-2 text-right">
+                    {% if session is defined %}
+                        <a href="/profile/{{ session.id }}" title="{{ session.name }}">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ session.name }}
+                        </a>
+                    {% else %}
                         <a href="#login">Login</a> | <a href="#login">Registra't</a>
+                    {% endif %}
                     </div>
                 </div>
             </div>

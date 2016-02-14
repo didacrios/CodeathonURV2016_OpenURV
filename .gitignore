@@ -41,7 +41,13 @@
 /nbproject/private/
 
 #sublime
-.sftp-config
+
+sftp-config.json
+
+# sass
+.sass-cache/
+
+compilador.sh
 
 # Media (attachments, profileimages...)
 /media/

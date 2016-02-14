@@ -5199,7 +5199,9 @@ a, a:link, a:visited, a:hover {
   text-decoration: none; }
 
 .top-header {
-  margin-bottom: 30px; }
+  margin: 30px 0; }
+.top-header .logo {
+  width: 200px; }
 .top-header a, .top-header a:link, .top-header a:visited {
   color: #777777;
   text-decoration: none;
@@ -5208,7 +5210,8 @@ a, a:link, a:visited, a:hover {
   text-decoration: underline;
   color: #ff9331; }
 .top-header .slogan {
-  color: #9a9a9a; }
+  color: #9a9a9a;
+  margin-left: 5px; }
 
 #field2 {
   background: #f1c40f; }
@@ -5225,20 +5228,39 @@ a, a:link, a:visited, a:hover {
 #field6 {
   background: #e74c3c; }
 
-.searchform .fieldlabels {
+/** Pagina principal **/
+.bafarada {
+  background: url("/bundles/ogoose/assets/img/bf.png") no-repeat center center;
+  width: 155px;
+  height: 180px;
+  background-size: cover;
+  font-size: 80%; }
+.bafarada div {
+  padding: 18px 6px 0 6px;
+  text-align: center; }
+
+.oca {
+  margin-bottom: 50px; }
+
+.todo {
+  font-size: 80%;
+  color: #777777; }
+
+/* Formularis */
+form .fieldlabels {
   margin-right: 5px;
   color: white; }
-.searchform .fieldlabels:hover {
+form .fieldlabels:hover {
   color: #eeeeee; }
-.searchform label {
+form label {
   color: #777777;
   font-size: 90%;
-  display: inline-block;
+  display: inline-block !important;
   cursor: pointer; }
-.searchform .radio {
+form .radio {
   text-transform: uppercase;
   margin-right: 10px; }
-.searchform #keyword {
+form #keyword {
   width: 100%;
   background: #eeeeee;
   border-radius: 4px;
@@ -5246,7 +5268,7 @@ a, a:link, a:visited, a:hover {
   padding: 7px;
   box-shadow: 0 0 4px #ff9331;
   outline: 0; }
-.searchform .buscar {
+form .buscar {
   color: white;
   background: #ff9331;
   border: 0;
@@ -5304,6 +5326,8 @@ a, a:link, a:visited, a:hover {
 .searchresults .buttonfield6 {
   color: white;
   background: #e74c3c; }
+.searchresults time {
+  color: #777777; }
 
 .star {
   color: #ff9331; }
