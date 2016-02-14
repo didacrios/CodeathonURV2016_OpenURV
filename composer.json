@@ -1,6 +1,6 @@
 {
-    "name": "codeathon/public_html",
-    "license": "proprietary",
+    "name": "codeathon/oGoose",
+    "license": "MIT",
     "type": "project",
     "autoload": {
         "psr-4": {

@@ -49,8 +49,8 @@ sftp-config.json
 
 compilador.sh
 
-# Media (attachments)
-/media/
+# Media (attachments) - ho comentem de moment perquè es puguin descarregar els fitxers de prova
+#/media/
 
-# profile images
-/web/profileimages/
+# profile images - ho comentem de moment perquè es puguin descarregar les imatges
+#/web/profileimages/
