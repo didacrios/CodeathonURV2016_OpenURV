@@ -5995,3 +5995,34 @@ form .buscar {
   padding: 10px 0;
   box-shadow: 0 0 3px #555555;
   min-height: 80px; }
+
+/* Fitxa de perfil */
+.author {
+  margin-top: 20px;
+  box-shadow: 0 0 3px #555555; }
+  .author h2 {
+    font-weight: bolder;
+    margin-left: 30px;
+    padding-top: 10px; }
+  .author .avatar {
+    float: right;
+    margin-top: -40px;
+    margin-right: 20px; }
+  .author .subprofile {
+    font-color: #777777;
+    margin-left: 30px; }
+  .author .bio {
+    margin-left: 30px;
+    margin-top: 8px; }
+    .author .bio blockquote {
+      border-color: #555555; }
+    .author .bio blockquote {
+      background: #eeeeee;
+      width: 90%; }
+  .author .orcid {
+    margin-left: 30px;
+    margin-bottom: 20px;
+    background: #e74c3c;
+    color: white; }
+    .author .orcid:hover {
+      color: #eeeeee; }

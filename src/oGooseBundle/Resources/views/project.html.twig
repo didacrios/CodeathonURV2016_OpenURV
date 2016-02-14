@@ -131,7 +131,7 @@
                                     {% for att in project.attachments %}
                                         <tr>
                                             <td>{{att.creationdate | date('d/m/Y') }}</td>
-                                            <td><a href="{{ url('author_show', { 'id': project.author.id }) }}">{{review.author.firstname}} {{review.author.lastname}}</a></td>
+                                            <td><a href="{{ url('author_show', { 'id': project.author.id }) }}">{{att.author.firstname}} {{att.author.lastname}}</a></td>
                                             <td>
                                                 <a href="{{ url('attachment_download', { 'id': att.id }) }}" class="btn btn-primary">Descarrega</a>
                                             </td>

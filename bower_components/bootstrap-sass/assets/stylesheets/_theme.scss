@@ -210,7 +210,7 @@ form {
 
 /** Pestanyes */
 .tab-content {
-    box-shadow: 0 0 3px $gray;
+    box-shadow: $shadow;
 
     .tab-pane {
         .table {
@@ -252,7 +252,58 @@ form {
     width: 80%;
     margin: auto;
     padding: 10px 0;
-    box-shadow: 0 0 3px $gray;
+    box-shadow: $shadow;
     min-height: 80px;
 }
 
+/* Fitxa de perfil */
+
+.author {
+
+    $authorSpace: 30px;
+
+    margin-top: 20px;
+    box-shadow: $shadow;
+
+    h2 {
+        font-weight: bolder;
+        margin-left: $authorSpace;
+        padding-top: 10px;
+    }
+
+    .avatar {
+        float: right;
+        margin-top: -40px;
+        margin-right: 20px;
+    }
+
+    .subprofile {
+        font-color: $gray-light;
+        margin-left: $authorSpace;
+    }
+
+    .bio {
+        margin-left: $authorSpace;
+        margin-top: 8px;
+
+        blockquote {
+            border-color: $gray;
+        }
+
+        blockquote {
+            background: $gray-lighter;
+            width: 90%;
+        }
+    }
+
+    .orcid {
+        margin-left: $authorSpace;
+        margin-bottom: 20px;
+        background: $fields-red;
+        color: white;
+
+        &:hover {
+            color: $gray-lighter;
+        }
+    }
+}

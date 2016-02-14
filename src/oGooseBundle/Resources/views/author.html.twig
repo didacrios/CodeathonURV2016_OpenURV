@@ -1,16 +1,25 @@
 {% extends 'oGooseBundle:base.html.twig' %}
 
 {% block content %}
-    <section class="container" >
+    <section class="container searchresults">
         <div class="row">
             <div class="author">
-                <h2>{{author.firstname}} {{author.lastname}}</h2>
-                
-                <div>
-                    {% if author.profile is not empty %}<strong>{{author.profile}}</strong>{% endif%}{% if author.location is not empty %}, {{author.location}}{% endif %}
+                <div class="row">
+
+                    <div class="col-xs-8">
+                        <h2>{{author.firstname}} {{author.lastname}}</h2>
+                        
+                        <div class="subprofile">
+                            {% if author.profile is not empty %}<strong>{{author.profile}}</strong>{% endif%}{% if author.location is not empty %}, {{author.location}}{% endif %}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4">
+                        <img class="avatar right" src="/profileimages/{% if author.avatar is not empty%}{{author.avatar}}{% else %}default.jpg{% endif %}" />
+                    </div>
+
                 </div>
                 
-                <img class="avatar" src="/profileimages/{% if author.avatar is not empty%}{{author.avatar}}{% else %}default.jpg{% endif %}" />
                 
                 <div class="bio">
                     <blockquote>{{author.curriculum}}</blockquote>
@@ -19,7 +28,7 @@
                 <div class="row social">
                     <div class="col-md-7">
                         {% if author.orcid is not empty %}
-                            <a href="http://orcid.org/{{author.orcid}}" target="_blank" class="btn btn-primary">Currículum</a>
+                            <a href="http://orcid.org/{{author.orcid}}" target="_blank" class="btn orcid">Currículum</a>
                         {% endif %}
                     </div>
                     <div class="col-md-3 col-md-offset-2 text-left">
@@ -27,6 +36,9 @@
                         <div>{% if author.url is not empty %}<span class="glyphicon glyphicon-globe"></span> <a href="{{author.url}}" target="_blank">Pàgina web</a>{% endif %}</div>
                     </div>
                 </div>
+            </div>
+            
+            <div class="row">
                     
                 <div class="projects">
                     <h1>Sóc autor{% if author.gender == 'f'%}a{% endif%} de</h1>
