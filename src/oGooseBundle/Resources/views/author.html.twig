@@ -41,21 +41,29 @@
             <div class="row">
                     
                 <div class="projects">
+
+                    {# Mostrem com a autors, i com a colaboradors, els mateixos treballs, ja que no ho hem separat al controller, per agilitzar#}
+
                     <h1>Sóc autor{% if author.gender == 'f'%}a{% endif%} de</h1>
                     <div class="row">
-                        {% for project in author.projects %}
-                            {% include 'oGooseBundle:partials:article.html.twig' %}
-                        {% endfor %}
+                        <section class="containerarticles">                       
+                            {% for project in author.projects %}
+                                {% include 'oGooseBundle:partials:article.html.twig' %}
+                            {% endfor %}
+                        </section>
                     </div>
                     
                     <h1>Col·loboro a</h1>
                     <div class="row">
-                        {% for project in author.projects %}
-                            {% include 'oGooseBundle:partials:article.html.twig' %}
-                        {% endfor %}
+                        <section class="containerarticles">
+                            {% for project in author.projects %}
+                                {% include 'oGooseBundle:partials:article.html.twig' %}
+                            {% endfor %}
+                        </section>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 {% endblock %}

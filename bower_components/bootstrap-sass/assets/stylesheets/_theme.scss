@@ -7,6 +7,11 @@ a:hover {
     text-decoration: none;
 }
 
+a.btn {
+    &:hover {
+        color: $gray-lighter;
+    }
+}
 
 
 .top-header {
@@ -28,7 +33,6 @@ a:hover {
             color: $taronja;
         }
     }
-    
 
     .slogan {
         color: lighten($gray-base, 60.5%);
@@ -305,5 +309,15 @@ form {
         &:hover {
             color: $gray-lighter;
         }
+    }
+
+}
+
+.containerarticles {
+    margin: auto;
+
+    .article {
+        width: 90%;
+        margin: 10px auto;
     }
 }

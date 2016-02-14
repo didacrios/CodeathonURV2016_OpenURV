@@ -5816,6 +5816,9 @@ a:hover {
   color: #ff9331;
   text-decoration: none; }
 
+a.btn:hover {
+  color: #eeeeee; }
+
 .top-header {
   margin: 30px 0; }
   .top-header .logo {
@@ -6026,3 +6029,9 @@ form .buscar {
     color: white; }
     .author .orcid:hover {
       color: #eeeeee; }
+
+.containerarticles {
+  margin: auto; }
+  .containerarticles .article {
+    width: 90%;
+    margin: 10px auto; }
