@@ -73,6 +73,27 @@ class Author {
      * @ORM\Column(name="curriculum", type="text", nullable=true)
      */
     private $curriculum;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="avatar", type="string", length=255, nullable=true)
+     */
+    private $avatar;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="profile", type="string", length=255, nullable=true)
+     */
+    private $profile;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="location", type="string", length=255, nullable=true)
+     */
+    private $location;
 
     /**
      * @ORM\OneToMany(targetEntity="oGooseBundle\Entity\Project", mappedBy="author")
@@ -233,6 +254,72 @@ class Author {
      */
     public function getCurriculum() {
         return $this->curriculum;
+    }
+    
+    /**
+     * Set avatar
+     *
+     * @param string $avatar
+     *
+     * @return Author
+     */
+    public function setAvatar($avatar) {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Get avatar
+     *
+     * @return string
+     */
+    public function getAvatar() {
+        return $this->avatar;
+    }
+    
+    /**
+     * Set profile
+     *
+     * @param string $profile
+     *
+     * @return Author
+     */
+    public function setProfile($profile) {
+        $this->profile = $profile;
+
+        return $this;
+    }
+
+    /**
+     * Get profile
+     *
+     * @return string
+     */
+    public function getProfile() {
+        return $this->profile;
+    }
+    
+    /**
+     * Set location
+     *
+     * @param string $location
+     *
+     * @return Author
+     */
+    public function setLocation($location) {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return string
+     */
+    public function getLocation() {
+        return $this->location;
     }
     
     /**

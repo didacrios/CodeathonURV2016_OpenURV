@@ -1,5 +1,12 @@
 {% extends 'oGooseBundle:base.html.twig' %}
 
 {% block content %}
-    
+    <section class="container" >
+        <div class="row">
+            <div class="author">
+                <h2>{{author.firstname}} {{author.lastname}}</h2>
+                <img class="avatar" src="/profileimages/{% if author.avatar is not empty%}{{author.avatar}}{% else %}default.jpg{% endif %}" />
+            </div>
+        </div>
+    </section>
 {% endblock %}
