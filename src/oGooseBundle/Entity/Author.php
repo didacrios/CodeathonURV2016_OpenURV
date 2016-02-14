@@ -94,6 +94,13 @@ class Author {
      * @ORM\Column(name="location", type="string", length=255, nullable=true)
      */
     private $location;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gender", type="string", columnDefinition="enum('f', 'm')")
+     */
+    private $gender;
 
     /**
      * @ORM\OneToMany(targetEntity="oGooseBundle\Entity\Project", mappedBy="author")
@@ -320,6 +327,28 @@ class Author {
      */
     public function getLocation() {
         return $this->location;
+    }
+       
+    /**
+     * Set gender
+     *
+     * @param string $gender
+     *
+     * @return Author
+     */
+    public function setGender($gender) {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Get gender
+     *
+     * @return string
+     */
+    public function getGender() {
+        return $this->gender;
     }
     
     /**

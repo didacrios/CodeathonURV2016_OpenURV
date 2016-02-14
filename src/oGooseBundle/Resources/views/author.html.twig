@@ -5,7 +5,44 @@
         <div class="row">
             <div class="author">
                 <h2>{{author.firstname}} {{author.lastname}}</h2>
+                
+                <div>
+                    {% if author.profile is not empty %}<strong>{{author.profile}}</strong>{% endif%}{% if author.location is not empty %}, {{author.location}}{% endif %}
+                </div>
+                
                 <img class="avatar" src="/profileimages/{% if author.avatar is not empty%}{{author.avatar}}{% else %}default.jpg{% endif %}" />
+                
+                <div class="bio">
+                    <blockquote>{{author.curriculum}}</blockquote>
+                </div>
+                
+                <div class="row social">
+                    <div class="col-md-7">
+                        {% if author.orcid is not empty %}
+                            <a href="http://orcid.org/{{author.orcid}}" target="_blank" class="btn btn-primary">Currículum</a>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-3 col-md-offset-2 text-left">
+                        <div>{% if author.email is not empty %}<span class="glyphicon glyphicon-envelope"></span> <a href="mailto:{{author.email}}">{{author.email}}</a>{% endif %}</div>
+                        <div>{% if author.url is not empty %}<span class="glyphicon glyphicon-globe"></span> <a href="{{author.url}}" target="_blank">Pàgina web</a>{% endif %}</div>
+                    </div>
+                </div>
+                    
+                <div class="projects">
+                    <h1>Sóc autor{% if author.gender == 'f'%}a{% endif%} de</h1>
+                    <div class="row">
+                        {% for project in author.projects %}
+                            {% include 'oGooseBundle:partials:article.html.twig' %}
+                        {% endfor %}
+                    </div>
+                    
+                    <h1>Col·loboro a</h1>
+                    <div class="row">
+                        {% for project in author.projects %}
+                            {% include 'oGooseBundle:partials:article.html.twig' %}
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         </div>
     </section>
