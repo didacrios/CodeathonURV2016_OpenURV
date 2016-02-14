@@ -35,15 +35,15 @@
                                     {% endfor %}
                                </div>
                                     
-                                <div class="col-xs-1 col-xs-offset-2">
+                                <div class="col-xs-2 col-xs-offset-2">
                                     <time datetime="{{ project.publicationdate | date('Y-m-d\\TH:i:sP') }}">{{ project.publicationdate | date('d/m/Y') }}</time>
                                 </div>
                                 
-                                <div class="col-xs-1">
+                                <div class="col-xs-2">
                                     {% if project.finish == 0 %}En procés{% else %}Finalitzat{% endif %} | {{project.projecttype.name}}</span>
                                 </div>
 
-                               <div class="col-xs-1">{{project.field.name}}</div>
+                               <div class="col-xs-2">{{project.field.name}}</div>
                            </footer>
                        </article>
                    {% endfor %}
