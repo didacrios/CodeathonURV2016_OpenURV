@@ -9,6 +9,7 @@ use oGooseBundle\Entity\Projecttype;
 use oGooseBundle\Entity\Field;
 use oGooseBundle\Entity\Rating;
 use oGooseBundle\Entity\Comment;
+use oGooseBundle\Entity\Projectauthor;
 
 /**
  * Project
@@ -22,6 +23,7 @@ class Project {
         $this->ratings = new ArrayCollection();
         $this->attachments = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->projectauthors = new ArrayCollection();
     }
 
     /**
@@ -120,6 +122,11 @@ class Project {
     * @ORM\OneToMany(targetEntity="oGooseBundle\Entity\Comment", mappedBy="project")
     */
     protected $comments;
+    
+    /**
+    * @ORM\OneToMany(targetEntity="oGooseBundle\Entity\Projectauthor", mappedBy="project")
+    */
+    protected $projectauthors;
 
     /**
      * Get id
@@ -448,5 +455,38 @@ class Project {
      */
     public function getComments() {
         return $this->comments;
+    }
+    
+    /**
+     * Add projectauthors
+     *
+     * @param Projectauthor $projectauthor
+     *
+     * @return Author
+     */
+    public function addProjectauthors(Projectauthor $projectauthor) {
+        $this->projectauthors[] = $projectauthor;
+
+        return $this;
+    }
+
+    /**
+     * Remove projectauthors
+     *
+     * @param Projectauthor $projectauthor
+     *
+     * @return Author
+     */
+    public function removeProjectauthors(Projectauthor $projectauthor) {
+        $this->projectauthors->removeElement($projectauthor);
+    }
+
+    /**
+     * Get projectauthors
+     *
+     * @return ArrayCollection
+     */
+    public function getProjectauthors() {
+        return $this->projectauthors;
     }
 }

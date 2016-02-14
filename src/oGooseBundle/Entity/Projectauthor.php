@@ -3,6 +3,8 @@
 namespace oGooseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use oGooseBundle\Entity\Author;
+use oGooseBundle\Entity\Project;
 
 /**
  * Projectauthor
@@ -41,7 +43,22 @@ class Projectauthor
      * @ORM\Column(name="owner", type="boolean")
      */
     private $owner;
-
+    
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="oGooseBundle\Entity\Author", inversedBy="projectauthors")
+     * @ORM\JoinColumn(onDelete="CASCADE")
+     */
+    private $author;
+    
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="oGooseBundle\Entity\Project", inversedBy="projectauthors")
+     * @ORM\JoinColumn(onDelete="CASCADE")
+     */
+    private $project;
 
     /**
      * Get id
@@ -123,6 +140,54 @@ class Projectauthor
     public function getOwner()
     {
         return $this->owner;
+    }
+    
+    /**
+     * Set author
+     *
+     * @param Author $author
+     *
+     * @return Project
+     */
+    public function setAuthor(Author $author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return Author
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+    
+    /**
+     * Set project
+     *
+     * @param Project $project
+     *
+     * @return Project
+     */
+    public function setProject(Project $project)
+    {
+        $this->project = $project;
+
+        return $this;
+    }
+
+    /**
+     * Get project
+     *
+     * @return Project
+     */
+    public function getProject()
+    {
+        return $this->project;
     }
 }
 

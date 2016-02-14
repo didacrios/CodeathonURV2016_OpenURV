@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use oGooseBundle\Entity\Project;
 use oGooseBundle\Entity\Rating;
 use oGooseBundle\Entity\Comment;
+use oGooseBundle\Entity\Projectauthor;
 
 /**
  * Author
@@ -21,6 +22,7 @@ class Author {
         $this->attachments = new ArrayCollection();
         $this->ratings = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->projectauthors = new ArrayCollection();
     }
 
     /**
@@ -121,6 +123,11 @@ class Author {
     * @ORM\OneToMany(targetEntity="oGooseBundle\Entity\Comment", mappedBy="author")
     */
     protected $comments;
+    
+    /**
+    * @ORM\OneToMany(targetEntity="oGooseBundle\Entity\Projectauthor", mappedBy="author")
+    */
+    protected $projectauthors;
 
     /**
      * Get id
@@ -483,4 +490,36 @@ class Author {
         return $this->comments;
     }
 
+    /**
+     * Add projectauthors
+     *
+     * @param Projectauthor $projectauthor
+     *
+     * @return Author
+     */
+    public function addProjectauthors(Projectauthor $projectauthor) {
+        $this->projectauthors[] = $projectauthor;
+
+        return $this;
+    }
+
+    /**
+     * Remove projectauthors
+     *
+     * @param Projectauthor $projectauthor
+     *
+     * @return Author
+     */
+    public function removeProjectauthors(Projectauthor $projectauthor) {
+        $this->projectauthors->removeElement($projectauthor);
+    }
+
+    /**
+     * Get projectauthors
+     *
+     * @return ArrayCollection
+     */
+    public function getProjectauthors() {
+        return $this->projectauthors;
+    }
 }
