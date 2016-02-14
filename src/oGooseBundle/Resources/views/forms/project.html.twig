@@ -1,0 +1,123 @@
+<!-- si ens arriba un projectid, estarem editant el formulari, sinó és un formulari nou -->
+
+{% extends 'oGooseBundle:base.html.twig' %}
+
+{% block content %}
+
+	<form action="" method="post" class="projectform">
+
+		<div class="form-group">
+			<label for="projectfile" data-toggle="tooltip" data-placement="right" title="Formats (Open Document, Word, PDF ...">Treball</label>
+			<input type="file" id="projectfile">
+		</div>
+
+		<hr>
+
+		<div>Qui pot treballar en aquest projecte?</label>
+		<div class="checkbox">
+			<input type="radio" name="open" id="open1" value="1" checked>
+			<label for="open1" class="radio" data-toggle="tooltip" data-placement="right" title="Qualsevol usuari podrà sol·licitar accés per treballar en aquest projecte">
+				Tothom
+			</label>
+
+			<input type="radio" name="open" id="open0" value="0">
+			<label for="open0" class="radio" data-toggle="tooltip" data-placement="right" title="Aquest projecte només estarà per visualitzar-se, només l'autor podrà treballar-hi">
+				Ningú
+			</label>
+		</div>
+		
+		<hr>
+
+		<div class="clearfix text-center">
+			<input type="radio" name="finish" id="finish0" value="0">
+			<label for="finish0" class="radio">
+				En progrés
+			</label>
+
+			<input type="radio" name="finish" id="finish1" value="1">
+			<label for="finish1" class="radio">
+				Finalitzat
+			</label>
+		</div>
+
+		<div class="form-group">
+			<label for="keyword">Paraules clau</label>
+			<input type="text" class="form-control" id="keyword" placeholder="Paraules clau" required value="{% if keyword is defined %}{{ keyword }}{% endif %}">
+		</div>
+
+		<div class="form-group">
+			<label for="authors">Autors</label>
+			<input type="text" class="form-control" id="keyword" placeholder="Paraules clau" required value="{% if keyword is defined %}{{ keyword }}{% endif %}">
+
+			<select class="select2-multiple" multiple="multiple" name="authors" id="authors">
+				{% for authors in author %}
+					<option value="{{ author.id }}">{{ author.lastname }}, {{ author.firstname }}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="form-group">
+			<p>L'autor no està a oGoose? <a href="#">Convida'l a unir-se-hi</a> o introdueix les seves dades:</p>
+			<div class="cloned" data-id="1">
+				<label for="extraAuthorFirstName1">Nom</label>
+				<input type="text" class="form-control" id="extraAuthorFirstName1" name="extraAuthorFirstName1" value="">
+
+				<label for="extraAuthorLastName1">Cognom</label>
+				<input type="text" class="form-control" id="extraAuthorLastName1" name="extraAuthorLastName1" value="">
+			</div>
+
+			<a href="javascript:void(0);" class="btn btn-default clone"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Afegeix un altre autor</a>
+		</div>
+
+		<div><input type="text" name="keyword" id="keyword" placeholder="Paraules clau o assignatura" required></div>
+		<hr>
+		<div>
+			<label for="fieldid">Tria el teu àmbit</label>
+		</div>
+		{% for field in fields %}
+			<a href="javascript:void(0);" id="field{{ field.id }}" class="fieldlabels label label-default" data-id="{{ field.id }}">{{ field.name }}</a>
+		{% endfor %}
+		<input type="hidden" id="fieldid" name="fieldid" value="">
+
+		<hr/>
+		
+		<div>
+			<label for="fieldid">Tipus de treball</label>
+		</div>
+
+		<div class="clearfix text-center">
+			{% for projecttype in projecttypes %}
+				<input type="radio" name="projecttype" id="projecttype{{ projecttype.id }}" value="{{ projecttype.id }}">
+				<label for="projecttype{{ projecttype.id }}" class="radio">
+					{{ projecttype.name }}
+				</label>
+			{% endfor %}
+		</div>
+
+		<hr>
+
+
+		<div class="text-center">
+			<input class="buscar" type="submit" name="submit" id="submit" value="Buscar">
+		</div>
+
+	</form>
+
+{% endblock %}
+
+{% block javascripts %}
+ 	{{ parent() }}
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
+
+ 	<script type="text/javascript">
+	    $(function(){
+
+			$(".select2-multiple").select2();
+
+			$('.clone').on('click', function(){
+				$(".cloned").clone().insertAfter("div.clone:last");
+			});
+
+	    });
+    </script>
+{% endblock %}
