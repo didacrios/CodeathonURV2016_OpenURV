@@ -41,5 +41,7 @@
 /nbproject/private/
 
 #sublime
-
 .sftp-config
+
+# Media (attachments, profileimages...)
+/media/
