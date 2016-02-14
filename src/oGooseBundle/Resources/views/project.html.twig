@@ -1,48 +1,93 @@
 {% extends 'oGooseBundle:base.html.twig' %}
 
 {% block content %}
-<section class="container" >
-    <div class="row">
-        <div class="project">
-            <article class="article field{{project.0.field.id}}">
-                <header>
-                    <h2><a href="/project/{{project.0.id}}">{{project.0.title}}</a></h2>
-                    <div class="authors">
-                        <strong>Autors:</strong>
-                        <a href="/author/{{project.0.author.id}}" rel="author">{{project.0.author.firstname}} {{project.0.author.lastname}}</a>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-xs-4">
-                            {% for i in 1..project.totalstars %}
-                                <span class="glyphicon glyphicon-star star" aria-hidden="true"></span>
-                            {% endfor %}
-                       </div>
-                       
-                       <div class="col-xs-1 col-xs-offset-2">
-                            <time datetime="{{ project.0.publicationdate | date('Y-m-d\\TH:i:sP') }}">{{ project.0.publicationdate | date('d/m/Y') }}</time>
+    <section class="container" >
+        <div class="row">
+            <div class="project">
+                <article class="article field{{project.field.id}}">
+                    <header>
+                        <h2><a href="/project/{{project.id}}">{{project.title}}</a></h2>
+                        <div class="authors">
+                            <strong>Autors:</strong>
+                            <a href="/author/{{project.author.id}}" rel="author">{{project.author.firstname}} {{project.author.lastname}}</a>
                         </div>
 
-                        <div class="col-xs-1">
-                            {% if project.0.finish == 0 %}En procés{% else %}Finalitzat{% endif %} | {{project.0.projecttype.name}}</span>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                {% set totalstars = 0 %}
+                                {% for rating in project.ratings %}
+                                    {% set totalstars = totalstars + rating.stars %}
+                                    {% if loop.last == true %}
+                                        {% set totalstars = (totalstars / project.ratings|length) | number_format(0) %}
+                                    {% endif %}
+                                {% endfor %}
+                                {% for i in 1..totalstars %}
+                                    <span class="glyphicon glyphicon-star star" aria-hidden="true"></span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-xs-1 col-xs-offset-2">
+                                <time datetime="{{ project.publicationdate | date('Y-m-d\\TH:i:sP') }}">{{ project.publicationdate | date('d/m/Y') }}</time>
+                            </div>
+
+                            <div class="col-xs-1">
+                                {% if project.finish == 0 %}En procés{% else %}Finalitzat{% endif %} | {{project.projecttype.name}}</span>
+                            </div>
+
+                            <div class="col-xs-1">{{project.field.name}}</div>
+                        </div>
+                    </header>
+                    <div class="abstract">
+                        <h4>Breu resum</h4>
+                        <p>{{project.abstract}}</p>
+                    </div>
+                    <footer>
+                        <div class="keywords">
+                            <span class="glyphicon glyphicon-tags" area-hidden="true"></span> {{project.keywords}}
                         </div>
 
-                       <div class="col-xs-1">{{project.0.field.name}}</div>
+                        <a href="{{ url('attachment_download', { 'id': project.attachments[0].id }) }}" class="btn btn-primary">Descarrega</a> <span class="updated">actualitzat a {{project.attachments[0].creationdate | date('d/m/Y')}}</span>
+                    </footer>
+                </article>
+
+                <div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Valoracions</a></li>
+                        <li role="presentation"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">Aportacions</a></li>
+                        <li role="presentation"><a href="#log" aria-controls="log" role="tab" data-toggle="tab">Historial</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="reviews">
+                            <div>
+                                <textarea placeholder="Escriu el teu missatge" class="add-review"></textarea>
+                            </div>
+                           {% for review in project.comments if review.type == 'review' %}
+                               <blockquote>
+                                   <p>{{review.comment}}</p>
+                                   <small>
+                                       <div class="row">
+                                           <div class="col-md-2">
+                                               {{review.creationdate | date('d/m/Y')}}
+                                           </div>
+                                           <div class="col-md-2">
+                                               {{review.author.firstname}} {{review.author.lastname}}
+                                           </div>
+                                       </div>
+                                       
+                                   </small>
+                               </blockquote>
+                           {% endfor %}
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="comments">
+                            - Aportacions -
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="log">
+                            - Historial -
+                        </div>
                     </div>
-                </header>
-                <div class="abstract">
-                    <h4>Breu resum</h4>
-                    <p>{{project.0.abstract}}</p>
                 </div>
-                <footer>
-                    <div class="keywords">
-                        <span class="glyphicon glyphicon-tags" area-hidden="true"></span> {{project.0.keywords}}
-                    </div>
-                    
-                        <a href="{{ url('attachment_download', { 'id': project.0.attachments[0].id }) }}" class="btn btn-primary">Descarrega</a> <span class="updated">actualitzat a {{project.0.attachments[0].creationdate | date('d/m/Y')}}</span>
-                </footer>
-            </article>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 {% endblock %}

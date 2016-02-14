@@ -3,6 +3,8 @@
 namespace oGooseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use oGooseBundle\Entity\Project;
+use oGooseBundle\Entity\Author;
 
 /**
  * Comment
@@ -31,7 +33,7 @@ class Comment
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=255)
+     * @ORM\Column(name="type", type="string", columnDefinition="enum('review', 'comment')")
      */
     private $type;
 
@@ -41,6 +43,22 @@ class Comment
      * @ORM\Column(name="creationdate", type="datetime")
      */
     private $creationdate;
+    
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="oGooseBundle\Entity\Project", inversedBy="comments")
+     * @ORM\JoinColumn(onDelete="CASCADE")
+     */
+    private $project;
+    
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="oGooseBundle\Entity\Author", inversedBy="comments")
+     * @ORM\JoinColumn(onDelete="CASCADE")
+     */
+    private $author;
 
 
     /**
@@ -123,6 +141,54 @@ class Comment
     public function getCreationdate()
     {
         return $this->creationdate;
+    }
+    
+    /**
+     * Set project
+     *
+     * @param Project $project
+     *
+     * @return Comment
+     */
+    public function setProject(Project $project)
+    {
+        $this->project = $project;
+
+        return $this;
+    }
+
+    /**
+     * Get project
+     *
+     * @return Project
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
+    
+    /**
+     * Set author
+     *
+     * @param Author $author
+     *
+     * @return Comment
+     */
+    public function setAuthor(Author $author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return Author
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 }
 

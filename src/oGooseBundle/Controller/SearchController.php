@@ -36,7 +36,7 @@ class SearchController extends Controller
                     ->leftJoin('p.ratings', 'r')
                     ->where("(p.keywords like '%$keyword%' OR p.title like '%$keyword%')")
                     ->select('p, pt, f, au, r')
-                    ->addSelect('SUM(r.stars) / COUNT(r) as totalstars')
+                    //->addSelect('SUM(r.stars) / COUNT(r) as totalstars')
                     ->orderBy('p.publicationdate', 'desc');
 
             if (!empty($fieldid)) { //Si tenim àmbit, afegim el filtre

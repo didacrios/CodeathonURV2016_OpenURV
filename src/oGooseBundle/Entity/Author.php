@@ -5,6 +5,8 @@ namespace oGooseBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use oGooseBundle\Entity\Project;
+use oGooseBundle\Entity\Rating;
+use oGooseBundle\Entity\Comment;
 
 /**
  * Author
@@ -18,6 +20,7 @@ class Author {
         $this->projects = new ArrayCollection();
         $this->attachments = new ArrayCollection();
         $this->ratings = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -85,6 +88,11 @@ class Author {
     * @ORM\OneToMany(targetEntity="oGooseBundle\Entity\Rating", mappedBy="author")
     */
     protected $ratings;
+    
+    /**
+    * @ORM\OneToMany(targetEntity="oGooseBundle\Entity\Comment", mappedBy="author")
+    */
+    protected $comments;
 
     /**
      * Get id
@@ -324,6 +332,39 @@ class Author {
      */
     public function getRatings() {
         return $this->ratings;
+    }
+    
+    /**
+     * Add comments
+     *
+     * @param Comment $comment
+     *
+     * @return Author
+     */
+    public function addComments(Comment $comment) {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param Comment $comment
+     *
+     * @return Author
+     */
+    public function removeComments(Comment $comment) {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return ArrayCollection
+     */
+    public function getComments() {
+        return $this->comments;
     }
 
 }

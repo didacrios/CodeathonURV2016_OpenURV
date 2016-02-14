@@ -25,7 +25,7 @@ class ProjectController extends Controller
                 ->leftJoin('p.attachments', 'a')
                 ->where("p.id = $id")
                 ->select('p, pt, f, au, r')
-                ->addSelect('SUM(r.stars) / COUNT(r) as totalstars')
+                //->addSelect('SUM(r.stars) / COUNT(r) as totalstars')
                 ->orderBy('p.publicationdate', 'desc')
                 ->addOrderBy('a.creationdate', 'desc');
         

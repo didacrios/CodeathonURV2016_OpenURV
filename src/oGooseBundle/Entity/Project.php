@@ -8,6 +8,7 @@ use oGooseBundle\Entity\Author;
 use oGooseBundle\Entity\Projecttype;
 use oGooseBundle\Entity\Field;
 use oGooseBundle\Entity\Rating;
+use oGooseBundle\Entity\Comment;
 
 /**
  * Project
@@ -20,6 +21,7 @@ class Project {
     public function __construct() {
         $this->ratings = new ArrayCollection();
         $this->attachments = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -113,6 +115,11 @@ class Project {
     * @ORM\OneToMany(targetEntity="oGooseBundle\Entity\Attachment", mappedBy="project")
     */
     protected $attachments;
+    
+    /**
+    * @ORM\OneToMany(targetEntity="oGooseBundle\Entity\Comment", mappedBy="project")
+    */
+    protected $comments;
 
     /**
      * Get id
@@ -408,5 +415,38 @@ class Project {
      */
     public function getAttachments() {
         return $this->attachments;
+    }
+    
+    /**
+     * Add comments
+     *
+     * @param Comment $comment
+     *
+     * @return Author
+     */
+    public function addComments(Comment $comment) {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param Comment $comment
+     *
+     * @return Author
+     */
+    public function removeComments(Comment $comment) {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return ArrayCollection
+     */
+    public function getComments() {
+        return $this->comments;
     }
 }

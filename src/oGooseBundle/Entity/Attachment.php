@@ -116,7 +116,7 @@ class Attachment
      *
      * @param Author $author
      *
-     * @return Project
+     * @return Attachment
      */
     public function setAuthor(Author $author)
     {
@@ -140,7 +140,7 @@ class Attachment
      *
      * @param Project $project
      *
-     * @return Project
+     * @return Attachment
      */
     public function setProject(Project $project)
     {
