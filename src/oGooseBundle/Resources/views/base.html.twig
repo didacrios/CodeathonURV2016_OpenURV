@@ -1,4 +1,6 @@
-{% set session = '1' %}
+{# informació fake per a emular un objecte amb la la sessió  #}
+{% set session = {'id': '1', 'email': 'teresa.morla@urv.cat', 'name': 'Teresa Morlà'} %}
+
 <!DOCTYPE html>
 <!--[if IE 7 ]><html class="ie ie7 lte9 lte8 lte7" lang="en-US"><![endif]-->
 <!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="en-US">	<![endif]-->
@@ -36,7 +38,13 @@
                     </div>
 
                     <div class="col-xs-12 col-sm-6 col-lg-2 text-right">
+                    {% if session is defined %}
+                        <a href="/profile/{{ session.id }}" title="{{ session.name }}">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ session.name }}
+                        </a>
+                    {% else %}
                         <a href="#login">Login</a> | <a href="#login">Registra't</a>
+                    {% endif %}
                     </div>
                 </div>
             </div>
