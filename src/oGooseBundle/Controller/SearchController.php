@@ -34,7 +34,7 @@ class SearchController extends Controller
                     ->innerJoin('p.field', 'f')
                     ->innerJoin('p.author', 'au')
                     ->leftJoin('p.ratings', 'r')
-                    ->where("(p.keywords like '%$keyword%' OR p.title like '%$keyword%')")
+                    ->where("(p.keywords like '%$keyword%' OR p.title like '%$keyword%' OR au.firstname LIKE '%$keyword%' OR au.lastname LIKE '%$keyword%')")
                     ->select('p, pt, f, au, r')
                     //->addSelect('SUM(r.stars) / COUNT(r) as totalstars')
                     ->orderBy('p.publicationdate', 'desc');
