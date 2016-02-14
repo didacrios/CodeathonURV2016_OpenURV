@@ -19,7 +19,7 @@ class SearchController extends Controller
         $realKeyword = '';
         $projects = array();
  
-        if ($request->getMethod() == 'POST') {
+        if ($request->getMethod() == 'POST') { //(To do: fer formularis utilitzant Symfony)
             //Recollim les dades del formulari
             $fieldid = $request->get('fieldid');
             $projecttypeid = $request->get('projecttypeid');

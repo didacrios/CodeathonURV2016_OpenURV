@@ -1,0 +1,48 @@
+{% extends 'oGooseBundle:base.html.twig' %}
+
+{% block content %}
+<section class="container" >
+    <div class="row">
+        <div class="project">
+            <article class="article field{{project.0.field.id}}">
+                <header>
+                    <h2><a href="/project/{{project.0.id}}">{{project.0.title}}</a></h2>
+                    <div class="authors">
+                        <strong>Autors:</strong>
+                        <a href="/author/{{project.0.author.id}}" rel="author">{{project.0.author.firstname}} {{project.0.author.lastname}}</a>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-xs-4">
+                            {% for i in 1..project.totalstars %}
+                                <span class="glyphicon glyphicon-star star" aria-hidden="true"></span>
+                            {% endfor %}
+                       </div>
+                       
+                       <div class="col-xs-1 col-xs-offset-2">
+                            <time datetime="{{ project.0.publicationdate | date('Y-m-d\\TH:i:sP') }}">{{ project.0.publicationdate | date('d/m/Y') }}</time>
+                        </div>
+
+                        <div class="col-xs-1">
+                            {% if project.0.finish == 0 %}En procés{% else %}Finalitzat{% endif %} | {{project.0.projecttype.name}}</span>
+                        </div>
+
+                       <div class="col-xs-1">{{project.0.field.name}}</div>
+                    </div>
+                </header>
+                <div class="abstract">
+                    <h4>Breu resum</h4>
+                    <p>{{project.0.abstract}}</p>
+                </div>
+                <footer>
+                    <div class="keywords">
+                        <span class="glyphicon glyphicon-tags" area-hidden="true"></span> {{project.0.keywords}}
+                    </div>
+                    
+                    <a href="#downloadattachment-{{project.0.attachments[0].id}}" class="btn btn-primary">Descarrega</a>
+                </footer>
+            </article>
+        </div>
+    </div>
+</section>
+{% endblock %}
