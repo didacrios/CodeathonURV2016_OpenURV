@@ -116,6 +116,10 @@ form {
     }
 }
 
+/* problemes amb el SASS i el map */
+.abstract {
+    margin-left: 8px;
+}
 
 .searchresults {
     h1 {
@@ -146,7 +150,6 @@ form {
             }
         }
 
-        .abstract,
         header,
         footer {
             margin-left: 8px;

@@ -5276,6 +5276,10 @@ form .buscar {
   padding: 5px;
   min-width: 100px; }
 
+/* problemes amb el SASS i el map */
+.abstract {
+  margin-left: 8px; }
+
 .searchresults h1 {
   background: #eeeeee;
   color: #555555;
@@ -5293,7 +5297,7 @@ form .buscar {
   color: black; }
 .searchresults article h2 a:hover, .searchresults article h2 a:link:hover, .searchresults article h2 a:visited:hover {
   text-decoration: underline; }
-.searchresults article .abstract, .searchresults article header, .searchresults article footer {
+.searchresults article header, .searchresults article footer {
   margin-left: 8px; }
 .searchresults article .btn {
   border-radius: 2px;
@@ -5333,5 +5337,3 @@ form .buscar {
   color: #ff9331; }
 .star.off {
   color: #eeeeee; }
-
-/*# sourceMappingURL=ogoose.css.map */
