@@ -49,5 +49,8 @@ sftp-config.json
 
 compilador.sh
 
-# Media (attachments, profileimages...)
+# Media (attachments)
 /media/
+
+# profile images
+/web/profileimages/
