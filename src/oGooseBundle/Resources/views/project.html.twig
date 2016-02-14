@@ -46,7 +46,9 @@
                             <span class="glyphicon glyphicon-tags" area-hidden="true"></span> {{project.keywords}}
                         </div>
 
-                        <a href="{{ url('attachment_download', { 'id': project.attachments[0].id }) }}" class="btn btn-primary">Descarrega</a> <span class="updated">actualitzat a {{project.attachments[0].creationdate | date('d/m/Y')}}</span>
+                        {% if project.attachments is not empty %}
+                            <a href="{{ url('attachment_download', { 'id': project.attachments[0].id }) }}" class="btn btn-primary">Descarrega</a> <span class="updated">actualitzat a {{project.attachments[0].creationdate | date('d/m/Y')}}</span>
+                        {% endif %}
                     </footer>
                 </article>
 
@@ -114,22 +116,24 @@
                            {% endfor %}
                         </div>
                         <div role="tabpanel" class="tab-pane" id="log">
-                            <table class="table">
-                                <tr>
-                                    <th>Actualitzat</th>
-                                    <th>Autor</th>
-                                    <th>-</th>
-                                </tr>
-                                {% for att in project.attachments %}
+                            {% if project.attachments|length > 0 %}
+                                <table class="table">
                                     <tr>
-                                        <td>{{att.creationdate | date('d/m/Y') }}</td>
-                                        <td>{{att.author.firstname}} {{att.author.lastname}}</td>
-                                        <td>
-                                            <a href="{{ url('attachment_download', { 'id': att.id }) }}" class="btn btn-primary">Descarrega</a>
-                                        </td>
+                                        <th>Actualitzat</th>
+                                        <th>Autor</th>
+                                        <th>-</th>
                                     </tr>
-                                {% endfor %}
-                            </table>
+                                    {% for att in project.attachments %}
+                                        <tr>
+                                            <td>{{att.creationdate | date('d/m/Y') }}</td>
+                                            <td>{{att.author.firstname}} {{att.author.lastname}}</td>
+                                            <td>
+                                                <a href="{{ url('attachment_download', { 'id': att.id }) }}" class="btn btn-primary">Descarrega</a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

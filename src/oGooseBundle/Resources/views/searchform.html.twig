@@ -1,5 +1,5 @@
 <form action="{{path('search')}}" method="post" class="searchform">
-    <div><input type="text" name="keyword" id="keyword" placeholder="Paraules clau, assignatura o autor" required {% if keyword is defined and keyword is not empty %}value="{{keyword}}"{% endif %}></div>
+    <div><input type="text" name="keyword" id="keyword" placeholder="Paraules clau, assignatura o autor" {% if keyword is defined and keyword is not empty %}value="{{keyword}}"{% endif %}></div>
     <hr>
     <div><label for="fieldid">Tria el teu àmbit</label></div>
     {% for field in fields %}
