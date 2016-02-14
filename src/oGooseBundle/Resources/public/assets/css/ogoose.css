@@ -5964,3 +5964,30 @@ form .buscar {
   color: #ff9331; }
   .star.off {
     color: #eeeeee; }
+
+/** Pestanyes */
+.tab-content {
+  box-shadow: 0 0 3px #555555; }
+  .tab-content form {
+    margin: 20px auto;
+    width: 80%; }
+  .tab-content input[type="submit"] {
+    margin-left: 5px; }
+  .tab-content blockquote {
+    width: 80%;
+    font-size: 90%;
+    margin: 10px auto;
+    box-shadow: 0 0 3px #777777; }
+
+.keywords {
+  font-size: 90%;
+  margin: 10px 0; }
+  .keywords span {
+    margin-right: 5px; }
+
+.comment {
+  width: 80%;
+  margin: auto;
+  padding: 10px 0;
+  box-shadow: 0 0 3px #555555;
+  min-height: 80px; }

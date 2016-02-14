@@ -47,7 +47,7 @@
                         </div>
 
                         {% if project.attachments is not empty %}
-                            <a href="{{ url('attachment_download', { 'id': project.attachments[0].id }) }}" class="btn btn-primary">Descarrega</a> <span class="updated">actualitzat a {{project.attachments[0].creationdate | date('d/m/Y')}}</span>
+                            <a href="{{ url('attachment_download', { 'id': project.attachments[0].id }) }}" class="btn buttonfield{{ project.field.id }}">Descarrega</a> <span class="updated">actualitzat a {{project.attachments[0].creationdate | date('d/m/Y')}}</span>
                         {% endif %}
                     </footer>
                 </article>
@@ -80,7 +80,7 @@
                                                {{review.creationdate | date('d/m/Y')}}
                                            </div>
                                            <div class="col-md-2">
-                                               {{review.author.firstname}} {{review.author.lastname}}
+                                              <a href="{{ url('author_show', { 'id': project.author.id }) }}">{{review.author.firstname}} {{review.author.lastname}}</a>
                                            </div>
                                        </div>
                                        
@@ -88,6 +88,7 @@
                                </blockquote>
                            {% endfor %}
                         </div>
+
                         <div role="tabpanel" class="tab-pane {% if section == 'comments'%}active{% endif %}" id="comments">
                            <form method="post" action="{{path('comment_new')}}">
                                 <textarea name="comment" placeholder="Escriu el teu missatge" class="comment" required></textarea>

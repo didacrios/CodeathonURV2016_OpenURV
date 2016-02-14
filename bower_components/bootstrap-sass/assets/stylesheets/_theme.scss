@@ -208,4 +208,45 @@ form {
     }
 }
 
+/** Pestanyes */
+.tab-content {
+    box-shadow: 0 0 3px $gray;
+
+    .tab-pane {
+
+    }
+
+    form {
+        margin: 20px auto;
+        width: 80%;
+    }
+
+    input[type="submit"] {
+        margin-left: 5px;
+    }
+
+    blockquote {
+        width: 80%;
+        font-size: 90%;
+        margin: 10px auto;
+        box-shadow: 0 0 3px $gray-light;
+    }
+
+
+}
+
+.keywords {
+    font-size: 90%;
+    margin: 10px 0;
+    span {
+        margin-right: 5px;
+    }
+}
+.comment {
+    width: 80%;
+    margin: auto;
+    padding: 10px 0;
+    box-shadow: 0 0 3px $gray;
+    min-height: 80px;
+}
 
