@@ -5968,9 +5968,13 @@ form .buscar {
 /** Pestanyes */
 .tab-content {
   box-shadow: 0 0 3px #555555; }
+  .tab-content .tab-pane .table {
+    margin: 20px 0; }
   .tab-content form {
     margin: 20px auto;
     width: 80%; }
+    .tab-content form .row {
+      padding-top: 20px; }
   .tab-content input[type="submit"] {
     margin-left: 5px; }
   .tab-content blockquote {

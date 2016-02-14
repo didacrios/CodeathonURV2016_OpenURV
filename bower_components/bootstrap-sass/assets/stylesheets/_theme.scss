@@ -213,12 +213,19 @@ form {
     box-shadow: 0 0 3px $gray;
 
     .tab-pane {
+        .table {
+            margin: 20px 0;
+        }
 
     }
 
     form {
         margin: 20px auto;
         width: 80%;
+
+        .row {
+            padding-top: 20px;
+        }
     }
 
     input[type="submit"] {
@@ -231,7 +238,6 @@ form {
         margin: 10px auto;
         box-shadow: 0 0 3px $gray-light;
     }
-
 
 }
 
