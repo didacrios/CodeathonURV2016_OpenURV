@@ -4,6 +4,13 @@
         <div class="authors">
             <strong>Autors:</strong>
             <a href="{{ url('author_show', { 'id': project.author.id }) }}" rel="author">{{project.author.firstname}} {{project.author.lastname}}</a>
+            {% for projectauthor in project.projectauthors %}
+                {% if projectauthor.author.id != 0 %}
+                    , <a href="{{ url('author_show', { 'id': projectauthor.author.id }) }}" rel="author">{{projectauthor.author.firstname}} {{projectauthor.author.lastname}}</a>
+                {% else %}
+                    <span rel="author">, {{projectauthor.firstname}} {{projectauthor.lastname}}</span>
+                {% endif %}
+            {% endfor %}
         </div>
 
     </header>
