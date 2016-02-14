@@ -1,0 +1,181 @@
+
+a,
+a:link,
+a:visited,
+a:hover {
+    color: $taronja;
+    text-decoration: none;
+}
+
+
+
+.top-header {
+    margin: 30px 0;
+
+    .logo {
+        width: 200px;
+    }
+    a,
+    a:link,
+    a:visited {
+        color: $gray-light;
+        text-decoration: none;
+        line-height: 80px;
+
+        &:hover {
+            text-decoration: underline;
+            color: $taronja;
+        }
+    }
+
+    
+
+    .slogan {
+        color: lighten($gray-base, 60.5%);
+        margin-left: 5px;
+    }
+}
+
+
+#field2 { background: $fields-groc; }
+#field3 { background: $fields-grey; }
+#field4 { background: $fields-purple; }
+#field5 { background: $fields-green; }
+#field6 { background: $fields-red; }
+
+
+
+
+form {
+
+    .fieldlabels {
+        margin-right: 5px;
+        color: white;
+
+        &:hover {
+            color: $gray-lighter;
+        }
+    }
+
+    label {
+        color: $gray-light;
+        font-size: 90%;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .radio {
+        text-transform: uppercase;
+        margin-right: 10px;
+    }
+
+    #keyword {
+        width: 100%;
+        background: $gray-lighter;
+        border-radius: 4px;
+        border: 1px solid $taronja;
+        padding: 7px;
+        box-shadow: 0 0 4px $taronja;
+        outline: 0;
+    }
+
+
+    .buscar {
+        color: white;
+        background: $taronja;
+        border: 0;
+        border-radius: 4px;
+        padding: 5px;
+        min-width: 100px;
+    }
+}
+
+
+.searchresults {
+    h1 {
+        background: $gray-lighter;
+        color: $gray;
+        font-size: 80%;
+        text-transform: uppercase;
+        padding: 7px 0 10px 7px
+    }
+
+    article {
+        margin-bottom: 20px;
+        box-shadow: 0 0 5px $gray-light;
+        padding: 15px 0;
+        font-size: 90%;
+
+        h2 {
+            margin: 8px 0;
+
+            a,
+            a:link,
+            a:visited {
+                color: black;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        header,
+        footer {
+            margin-left: 8px;
+        }
+
+        .btn {
+            border-radius: 2px;
+            color: white;
+        }
+
+
+        .authors {
+            margin: 5px 0;
+            color: $gray-light;
+        }
+    }
+    .field2 { border-left: 4px solid $fields-groc; }
+    .field3 { border-left: 4px solid $fields-grey; }
+    .field4 { border-left: 4px solid $fields-purple; }
+    .field5 { border-left: 4px solid $fields-green; }
+    .field6 { border-left: 4px solid $fields-red; }
+
+    .buttonfield2 { 
+        color: white;
+        background: $fields-groc; 
+    }
+    .buttonfield3 { 
+        color: white;
+        background: $fields-grey; 
+    }
+    .buttonfield4 { 
+        color: white;
+        background: $fields-purple; 
+    }
+    .buttonfield5 { 
+        color: white;
+        background: $fields-green; 
+    }
+    .buttonfield6 { 
+        color: white;
+        background: $fields-red; 
+    }
+
+    time {
+        color: $gray-light;
+    }
+
+}
+
+
+.star {
+    color: $taronja;
+
+    &.off {
+        color: $gray-lighter;
+    }
+}
+
+
