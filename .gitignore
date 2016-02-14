@@ -42,4 +42,9 @@
 
 #sublime
 
-.sftp-config
+sftp-config.json
+
+# sass
+.sass-cache/
+
+compilador.sh
