@@ -39,7 +39,7 @@
                         <span class="glyphicon glyphicon-tags" area-hidden="true"></span> {{project.0.keywords}}
                     </div>
                     
-                    <a href="#downloadattachment-{{project.0.attachments[0].id}}" class="btn btn-primary">Descarrega</a>
+                        <a href="{{ url('attachment_download', { 'id': project.0.attachments[0].id }) }}" class="btn btn-primary">Descarrega</a> <span class="updated">actualitzat a {{project.0.attachments[0].creationdate | date('d/m/Y')}}</span>
                 </footer>
             </article>
         </div>

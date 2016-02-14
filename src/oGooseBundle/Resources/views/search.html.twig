@@ -11,7 +11,7 @@
                    {% for project in projects %}
                        <article class="article field{{project.0.field.id}}">
                            <header>
-                               <h2><a href="/project/{{project.0.id}}">{{project.0.title}}</a></h2>
+                               <h2><a href="{{ url('project_show', { 'id': project.0.id }) }}">{{project.0.title}}</a></h2>
                                <div class="authors">
                                    <strong>Autors:</strong>
                                    <a href="/author/{{project.0.author.id}}" rel="author">{{project.0.author.firstname}} {{project.0.author.lastname}}</a>

@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ProjectController extends Controller
 {
     /**
-     * @Route("/project/{id}", name="project")
+     * @Route("/project/{id}", name="project_show")
      * @Method({"GET", "POST"})
      */
     public function indexAction(Request $request, $id)
